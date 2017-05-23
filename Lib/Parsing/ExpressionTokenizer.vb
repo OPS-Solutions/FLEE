@@ -19,6 +19,7 @@
 '
 '
 ' Copyright (c) 2007 Eugene Ciloci
+' Modified by Neil Harbin 5/23/2017
 
 Imports System.IO
 
@@ -131,9 +132,6 @@ Friend Class ExpressionTokenizer
         AddPattern(pattern)
 
         pattern = New TokenPattern(CInt(ExpressionConstants.NOT), "NOT", TokenPattern.PatternType.STRING, "NOT")
-        AddPattern(pattern)
-
-        pattern = New TokenPattern(CInt(ExpressionConstants.NOT), "NOT", TokenPattern.PatternType.STRING, "!")
         AddPattern(pattern)
 
         pattern = New TokenPattern(CInt(ExpressionConstants.IN), "IN", TokenPattern.PatternType.STRING, "in")
