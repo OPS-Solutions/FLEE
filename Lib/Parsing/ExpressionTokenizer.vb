@@ -176,7 +176,7 @@ Friend Class ExpressionTokenizer
         pattern = New TokenPattern(CInt(ExpressionConstants.FALSE), "FALSE", TokenPattern.PatternType.STRING, "False")
         AddPattern(pattern)
 
-        pattern = New TokenPattern(CInt(ExpressionConstants.IDENTIFIER), "IDENTIFIER", TokenPattern.PatternType.REGEXP, "[a-z_$]\w*")
+        pattern = New TokenPattern(CInt(ExpressionConstants.IDENTIFIER), "IDENTIFIER", TokenPattern.PatternType.REGEXP, "[a-z_$][\w:]*")
         AddPattern(pattern)
 
         pattern = New TokenPattern(CInt(ExpressionConstants.HEX_LITERAL), "HEX_LITERAL", TokenPattern.PatternType.REGEXP, "0x[0-9a-f]+(u|l|ul|lu)?")
