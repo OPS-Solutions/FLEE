@@ -15,7 +15,7 @@
 ' 
 ' Flee - Fast Lightweight Expression Evaluator
 ' Copyright © 2007 Eugene Ciloci
-'
+' Modified by Neil Harbin 8/16/2018
 
 Imports System.Reflection.Emit
 
@@ -109,6 +109,13 @@ Friend Class BranchManager
 		Dim bi As New BranchInfo(startLoc, target)
 
 		Dim index As Integer = MyBranchInfos.IndexOf(bi)
+		'Index ends up being -1 because it can't find the branch if things end up being really long
+		'if(true or true or true... 43 times, 0, 1) for example won't work, while 42 will
+		'The isLongBranch function will also still evaluate to true even though if you run it, it will be like -500 > 127 which is false
+		'but I think it being less than -128 would also be a problem, so it should be true
+		If index < 0 Then
+			Return True
+		End If
 		bi = MyBranchInfos.Item(index)
 
 		Return bi.IsLongBranch
