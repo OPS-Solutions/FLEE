@@ -3,8 +3,8 @@ Eugene Ciloci
 http://www.codeplex.com/Flee
 -------------
 
-Version: [Version]
-Release Date: [Date]
+Version: 0.9.26.0
+Release Date: June 17, 2009
 
 New features:
 -ExpressionOptions.RealLiteralDataType: Specify the data type used to store real literals
@@ -15,3 +15,41 @@ Breaking Changes:
 -The result of the power operator is now of the same type as its first argument.  Example: 100 ^ 2 will return an integer; 1.5 ^ 2 will return a double.  Previously, the power operator always returned a double.
 
 Bug fixes:
+
+=============
+Neil Harbin
+https://github.com/OPS-Solutions/FLEE
+-------------
+
+Version: 0.9.26.1
+Release Date: 2017-5-23
+
+New features:
+-Added $ as an acceptable starting character for variable names
+-Added && as an alias for AND
+-Added || as an alias for OR
+
+-------------
+
+Version: 0.9.26.2
+Release Date: 2017-9-12
+
+New features:
+-Added : as an acceptable non-starting character for variable names
+
+-------------
+
+Version: 0.9.26.3
+Release Date: 2018-8-16
+
+Bug fixes:
+-Fixed problem with if(,,) expressions not working if a parameter was an expression with too many elements
+
+-------------
+
+Version: 0.9.26.4
+Release Date: 2021-8-25
+
+New features:
+-Added ! as an alias for NOT
+-Added left and right double quotes as aliases for normal double quotes
