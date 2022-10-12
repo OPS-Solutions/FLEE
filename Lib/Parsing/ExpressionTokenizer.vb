@@ -19,7 +19,7 @@
 '
 '
 ' Copyright (c) 2007 Eugene Ciloci
-' Modified by Neil Harbin 5/23/2017
+' Modified by Neil Harbin 2022/02/15
 
 Imports System.IO
 
@@ -132,9 +132,12 @@ Friend Class ExpressionTokenizer
         AddPattern(pattern)
 
         pattern = New TokenPattern(CInt(ExpressionConstants.NOT), "NOT", TokenPattern.PatternType.STRING, "NOT")
-        AddPattern(pattern)
+		AddPattern(pattern)
 
-        pattern = New TokenPattern(CInt(ExpressionConstants.IN), "IN", TokenPattern.PatternType.STRING, "in")
+		pattern = New TokenPattern(CInt(ExpressionConstants.NOT), "NOT", TokenPattern.PatternType.STRING, "!")
+		AddPattern(pattern)
+
+		pattern = New TokenPattern(CInt(ExpressionConstants.IN), "IN", TokenPattern.PatternType.STRING, "in")
         AddPattern(pattern)
 
         pattern = New TokenPattern(CInt(ExpressionConstants.DOT), "DOT", TokenPattern.PatternType.STRING, ".")
@@ -164,8 +167,8 @@ Friend Class ExpressionTokenizer
 		customPattern.Initialize(CInt(ExpressionConstants.REAL), "REAL", TokenPattern.PatternType.REGEXP, "\d{0}\{1}\d+([e][+-]\d{{1,3}})?(d|f|m)?", MyContext)
 		AddPattern(customPattern)
 
-        pattern = New TokenPattern(CInt(ExpressionConstants.STRING_LITERAL), "STRING_LITERAL", TokenPattern.PatternType.REGEXP, """([^""\r\n\\]|\\u[0-9a-f]{4}|\\[\\""'trn])*""")
-        AddPattern(pattern)
+		pattern = New TokenPattern(CInt(ExpressionConstants.STRING_LITERAL), "STRING_LITERAL", TokenPattern.PatternType.REGEXP, $"(""|{ChrW(8220)}|{ChrW(8221)})([^""{ChrW(8220)}{ChrW(8221)}\r\n\\]|\\u[0-9a-f]{{4}}|\\[\\""{ChrW(8220)}{ChrW(8221)}'trn])*(""|{ChrW(8220)}|{ChrW(8221)})")
+		AddPattern(pattern)
 
         pattern = New TokenPattern(CInt(ExpressionConstants.CHAR_LITERAL), "CHAR_LITERAL", TokenPattern.PatternType.REGEXP, "'([^'\r\n\\]|\\u[0-9a-f]{4}|\\[\\""'trn])'")
         AddPattern(pattern)
